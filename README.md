@@ -74,8 +74,6 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 
 **Pre-aggregation table.** `Agg_Monthly_Branch_Revenue` pre-calculates deposits, withdrawals, and transaction counts by branch, per month. Dashboard load time goes from scanning millions of rows every refresh to reading one pre-built summary.
 
----
-
 # Data Quality — Four Checks Before Anything Enters the Model
 
 | Check | What it catches | What happens |
@@ -85,8 +83,6 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | Duplicate Txn_ID | Same transaction appearing twice | First occurrence kept, rest discarded |
 | Unknown Customer | Transaction linked to a Customer_ID not in the system | Record held until customer is resolved |
 
----
-
 # Drill-Down Hierarchies
 
 | Dimension | How analysts can drill down |
@@ -95,8 +91,6 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | Location | State → Branch |
 | Product | Product Type → Product Name |
 | Customer | Tier → Customer Name |
-
----
 
 # Files in This Repo
 
@@ -108,13 +102,9 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | `star_schema_diagram.pdf` | Visual schema — all tables and relationships at a glance |
 | `Dimensional_Data_Modelling_for_Retail_Banking.pdf` | Full technical report — 6 pages covering every design decision |
 
----
-
 # Tools & Concepts
 
 `SQL (MySQL)` · `Star Schema Design` · `Dimensional Modelling` · `SCD Type 1 & 2` · `ETL / ELT Strategy` · `Range Partitioning` · `Composite Indexing` · `Aggregation Tables` · `Data Quality Framework` · `Kimball Methodology`
-
----
 
 # What This Model Enables
 
@@ -125,9 +115,7 @@ Once data is loaded into this schema:
 - Tier-based segmentation for targeted product strategy
 - Full-time intelligence: YoY growth, month-on-month trends, quarter comparisons
 
----
-
 *This was my first data modelling project — built April 2026 as part of HNG Internship Stage 3.*
-*The process of figuring out grain decisions, SCD types, and ETL order from scratch was genuinely one of the most interesting problems I've worked through.*
+*The process of figuring out grain decisions, SCD types, and ETL orders from scratch was genuinely one of the most interesting problems I've worked through.*
 
-**
+*https://github.com/favourogunbiyi/data_analysis_portfolio*
