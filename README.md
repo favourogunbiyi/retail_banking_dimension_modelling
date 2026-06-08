@@ -118,4 +118,4 @@ Once data is loaded into this schema:
 *This was my first data modelling project — built April 2026 as part of HNG Internship Stage 3.*
 *The process of figuring out grain decisions, SCD types, and ETL orders from scratch was genuinely one of the most interesting problems I've worked through.*
 
-*https://github.com/favourogunbiyi/data_analysis_portfolio*
+*[← Back to main portfolio](https://github.com/favourogunbiyi/data_analysis_portfolio)*
