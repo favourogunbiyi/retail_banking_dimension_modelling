@@ -1,7 +1,7 @@
 # Dimensional Data Modelling for Retail Banking Analytics
 My first data modelling project. Star Schema for a retail bank — built from 15 raw columns to a fully optimised, analytics-ready warehouse
 
-# The Problem
+## The Problem
 
 Palladium Bank had 18 months of transaction data and no way to use it properly. Every report ran directly on raw transaction logs — slow, inconsistent, and impossible to scale across five states: Lagos, Abuja, Kano, Port Harcourt, and Ibadan.
 
@@ -14,11 +14,15 @@ The Head of Retail Banking had four questions nobody could answer cleanly:
 
 The data existed. The structure to answer those questions didn't. That's what I built.
 
-# What I Did
+## What I Did
 
 This was my first data modelling project. I designed a complete Star Schema from scratch — profiling 15 raw columns, identifying what belonged in dimensions vs facts, making SCD decisions, writing the full SQL, and documenting an ETL strategy that could actually handle 18 months of history plus daily incremental loads going forward.
 
-# The Schema
+## Tools & Concepts
+
+`SQL (MySQL)` · `Star Schema Design` · `Dimensional Modelling` · `SCD Type 1 & 2` · `ETL / ELT Strategy` · `Range Partitioning` · `Composite Indexing` · `Aggregation Tables` · `Data Quality Framework` · `Kimball Methodology
+
+## The Schema
 
 One fact table at the centre, with five dimensions surrounding it.
 
@@ -33,13 +37,13 @@ One fact table at the centre, with five dimensions surrounding it.
 
 `Txn_ID` lives directly in the fact table as a degenerate dimension. It's just a reference number — no attributes worth spinning into its own table.
 
-# The Decisions That Mattered
+## The Decisions That Mattered
 
-# Why Per-Transaction Grain?
+### Why Per-Transaction Grain?
 
 I picked the most granular grain possible — one row per transaction. Some of the key business questions involved churn signals: tracking how recently and how often a customer transacts. You can't do that with daily or monthly summaries. You need every event.
 
-# SCD Type 2 — Where History Actually Matters
+### SCD Type 2 — Where History Actually Matters
 
 Not every dimension needs history. I had to think through each one.
 
@@ -51,7 +55,7 @@ Not every dimension needs history. I had to think through each one.
 
 **Dim_Product Name → Type 1.** Same logic — product renames are cosmetic. The analytical value is in what the product does, not what it was called last year.
 
-# ETL Strategy — Getting 18 Months In, Then Keeping It Fresh
+### ETL Strategy — Getting 18 Months In, Then Keeping It Fresh
 
 **Initial load:**
 1. Extract raw CSVs into staging — don't touch the main system yet
@@ -64,7 +68,7 @@ Not every dimension needs history. I had to think through each one.
 - For tier changes: expire the old customer record, insert a new current one (SCD Type 2 in action)
 - Unique constraint on `Txn_ID` physically blocks any duplicate from sneaking in
 
-# Performance — Built for Scale From the Start
+### Performance — Built for Scale From the Start
 
 Three things I put in from the beginning so the model doesn't slow down as data grows:
 
@@ -74,7 +78,7 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 
 **Pre-aggregation table.** `Agg_Monthly_Branch_Revenue` pre-calculates deposits, withdrawals, and transaction counts by branch, per month. Dashboard load time goes from scanning millions of rows every refresh to reading one pre-built summary.
 
-# Data Quality — Four Checks Before Anything Enters the Model
+### Data Quality — Four Checks Before Anything Enters the Model
 
 | Check | What it catches | What happens |
 |---|---|---|
@@ -83,7 +87,7 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | Duplicate Txn_ID | Same transaction appearing twice | First occurrence kept, rest discarded |
 | Unknown Customer | Transaction linked to a Customer_ID not in the system | Record held until customer is resolved |
 
-# Drill-Down Hierarchies
+### Drill-Down Hierarchies
 
 | Dimension | How analysts can drill down |
 |---|---|
@@ -92,7 +96,7 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | Product | Product Type → Product Name |
 | Customer | Tier → Customer Name |
 
-# Files in This Repo
+### Files in This Repo
 
 | File | What's inside |
 |---|---|
@@ -101,12 +105,9 @@ Three things I put in from the beginning so the model doesn't slow down as data 
 | `star_schema_performance_recommendation.sql` | Partitioning script, 4 indexes, and the aggregation table |
 | `star_schema_diagram.pdf` | Visual schema — all tables and relationships at a glance |
 | `Dimensional_Data_Modelling_for_Retail_Banking.pdf` | Full technical report — 6 pages covering every design decision |
+`
 
-# Tools & Concepts
-
-`SQL (MySQL)` · `Star Schema Design` · `Dimensional Modelling` · `SCD Type 1 & 2` · `ETL / ELT Strategy` · `Range Partitioning` · `Composite Indexing` · `Aggregation Tables` · `Data Quality Framework` · `Kimball Methodology`
-
-# What This Model Enables
+### What This Model Enables
 
 Once data is loaded into this schema:
 - Branch revenue reports that load in milliseconds — not minutes
