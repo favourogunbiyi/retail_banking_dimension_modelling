@@ -1,5 +1,5 @@
-# Dimensional Data Modelling for Retail Banking Analytics
-My first data modelling project. Star Schema for a retail bank — built from 15 raw columns to a fully optimised, analytics-ready warehouse
+# Palladium Bank Retail Data Modelling
+My first data modelling project. Star Schema for a Palladium Bank — built from 15 raw columns to a fully optimised, analytics-ready warehouse
 
 ## The Problem
 
