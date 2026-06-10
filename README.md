@@ -20,7 +20,7 @@ This was my first data modelling project. I designed a complete Star Schema from
 
 ## Tools & Concepts
 
-`SQL (MySQL)` · `Star Schema Design` · `Dimensional Modelling` · `SCD Type 1 & 2` · `ETL / ELT Strategy` · `Range Partitioning` · `Composite Indexing` · `Aggregation Tables` · `Data Quality Framework`
+`SQL (MySQL)` · `Star Schema Design` · `Dimensional Modelling` · `SCD Type 1 & 2` · `ETL / ELT Strategy` · `Range Partitioning` · `Composite Indexing` · `Aggregation Tables` · `Data Quality Framework` · `Kimball Methodology`
 
 ## The Schema
 
