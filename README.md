@@ -1,5 +1,5 @@
 # Palladium Bank Retail Data Modelling
-My first data modelling project. Star Schema for a Palladium Bank — built from 15 raw columns to a fully optimised, analytics-ready warehouse
+Designed a retail banking star schema that transforms 18 months of raw transaction data into an analytics-ready warehouse supporting customer segmentation, churn analysis, branch performance reporting, and channel analytics.
 
 ## The Problem
 
